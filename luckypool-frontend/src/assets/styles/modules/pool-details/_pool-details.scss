@@ -1,0 +1,42 @@
+.pooldetails-container {
+    height: 100%;
+    width: 100%;
+    .pool-details-wrapper {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // flex-direction: column;
+        .pool-details {
+            padding: 0 40px;
+            border: 1px solid;
+            border-radius: 10px;
+            .pool-name {
+                margin: 60px 0;
+                font-size: 2.5rem;
+                font-weight: bold;
+                display: flex;
+                display: flex;
+                justify-content: center;
+            }
+            .pool-info-wrapper {
+                display: flex;
+                margin-bottom: 60px;
+                .pool-info {
+                    padding: 0 40px;
+                    .title {
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                    }
+                    .value {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 10px 0;
+                    }
+                }
+            }
+        }
+    }
+}

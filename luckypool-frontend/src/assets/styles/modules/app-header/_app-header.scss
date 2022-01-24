@@ -1,0 +1,25 @@
+.app-header-container {
+    height: $app-header-height;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: lightgrey 1px solid;
+    padding: 0 20px;
+    .app-name-wrapper {
+      display: flex;
+      align-items: center;
+      .app-name {
+        font-size: 20px;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+      .MuiFormControl-root {
+        margin-left: 20px;
+      }
+    }
+    .metamask-address {
+      font-weight: bold;
+    } 
+  }
