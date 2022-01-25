@@ -13,7 +13,7 @@ const createStoreWithMiddleware = compose(
     thunkMiddleware,
     promiseMiddleware({ promiseTypeSuffixes: ['LOADING', 'SUCCESS', 'ERROR'] }),
   ),
-  window.devToolsExtension ? window.devToolsExtension() : f => f,
+  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
 )(createStore);
 
 export default function configureStore() {

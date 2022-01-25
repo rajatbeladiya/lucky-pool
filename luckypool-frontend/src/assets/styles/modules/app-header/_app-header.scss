@@ -19,7 +19,13 @@
         margin-left: 20px;
       }
     }
-    .metamask-address {
-      font-weight: bold;
-    } 
+    .connect-wallet-wrapper {
+      .connect-wallet {
+        border-radius: 10px;
+        width: 150px;
+      }
+      .metamask-address {
+        font-weight: bold;
+      } 
+    }
   }

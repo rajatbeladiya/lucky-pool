@@ -3,6 +3,7 @@ import * as actionTypes from './actionTypes';
 const INITIAL_STATE = {
   loading: false,
   data: {},
+  account: '',
 };
 
 
@@ -12,6 +13,11 @@ export default (state = INITIAL_STATE, action) => { // eslint-disable-line
       return {
         ...state,
         data: action.payload,
+      };
+    case actionTypes.SET_ACCOUNT:
+      return {
+        ...state,
+        account: action.payload,
       };
     default:
       return state;
