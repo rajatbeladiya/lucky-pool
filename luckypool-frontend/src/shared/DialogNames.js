@@ -1,0 +1,1 @@
+export const CREATE_POOL_DIALOG = 'CREATE_POOL_DIALOG';

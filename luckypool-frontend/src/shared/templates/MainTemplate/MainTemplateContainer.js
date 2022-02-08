@@ -21,7 +21,7 @@ MainTemplateContainer.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]),
   className: PropTypes.string,
   childrenContainerClassName: PropTypes.string,
-  hideFooter: false,  
+  hideFooter: PropTypes.bool,  
 };
 
 MainTemplateContainer.defaultProps = {

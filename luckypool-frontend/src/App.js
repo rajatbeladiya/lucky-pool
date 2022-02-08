@@ -1,14 +1,20 @@
 import { ToastContainer } from 'react-toastify';
+// import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+// import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import { MuiThemeProvider } from 'material-ui';
 
 import Routes from './Routes';
-import './assets/styles/app.scss';
+import MUITheme from './assets/mui/muiTheme';
+// import './assets/styles/app.scss';
 
 function App() {
   return (
-    <div className="App">
-      <ToastContainer id="forToast" />
-      <Routes />
-    </div>
+    <MuiThemeProvider theme={MUITheme}>
+      <div className="App">
+        <ToastContainer id="forToast" />
+        <Routes />
+      </div>
+    </MuiThemeProvider>
   );
 }
 

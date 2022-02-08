@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   loading: false,
   data: {},
   account: '',
+  currentDialogNames: [],
 };
 
 
@@ -18,6 +19,21 @@ export default (state = INITIAL_STATE, action) => { // eslint-disable-line
       return {
         ...state,
         account: action.payload,
+      };
+    case actionTypes.OPEN_DIALOG:
+      return {
+        ...state,
+        currentDialogNames: [
+          ...state.currentDialogNames,
+          action.payload,
+        ],
+      };
+    case actionTypes.CLOSE_DIALOG:
+      return {
+        ...state,
+        currentDialogNames: state.currentDialogNames
+          .filter(dialogName => dialogName !== action.payload),
+        // selectedTab: {},
       };
     default:
       return state;

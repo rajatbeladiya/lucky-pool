@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getWeb3 } from '../../../utils';
 
+import { getWeb3 } from '../../../utils';
 import { luckyPoolContract } from '../../../utils/ethersIndex';
+import { CREATE_POOL_DIALOG } from '../../DialogNames';
 
 import AppHeader from './AppHeader';
 import * as landingActions from '../../../modules/landing/redux/actions';
@@ -18,8 +19,10 @@ class AppHeaderContainer extends Component {
     const web3 = await getWeb3();
     const [account] = await web3.eth.getAccounts();
     setAccount(account);
+    console.log('luckyPoolContract=====', luckyPoolContract);
     try {
       const admin = await luckyPoolContract.owner();
+      console.log('admin======', admin);
       this.setState({
         admin
       });
@@ -33,7 +36,8 @@ class AppHeaderContainer extends Component {
   }
 
   onCreatePool = async () => {
-    
+    const { openDialog } = this.props;
+    openDialog(CREATE_POOL_DIALOG);
   }
 
   render() {
@@ -55,7 +59,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setAccount: account => dispatch(landingActions.setAccount(account))
+  setAccount: account => dispatch(landingActions.setAccount(account)),
+  openDialog: dialogName => dispatch(landingActions.openDialog(dialogName))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppHeaderContainer);
