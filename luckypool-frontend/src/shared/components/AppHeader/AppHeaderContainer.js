@@ -15,7 +15,7 @@ class AppHeaderContainer extends Component {
   };
 
   async componentDidMount() {
-    const { setAccount } = this.props;
+    const { setAccount, setOwner } = this.props;
     const web3 = await getWeb3();
     const [account] = await web3.eth.getAccounts();
     setAccount(account);
@@ -26,6 +26,7 @@ class AppHeaderContainer extends Component {
       this.setState({
         admin
       });
+      setOwner(admin);
     } catch (e) {
       console.log('error======', e);
     }
@@ -60,6 +61,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setAccount: account => dispatch(landingActions.setAccount(account)),
+  setOwner: account => dispatch(landingActions.setOwner(account)),
   openDialog: dialogName => dispatch(landingActions.openDialog(dialogName))
 });
 

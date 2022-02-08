@@ -10,6 +10,21 @@ export const setAccount = (account) => ({
   payload: account,
 });
 
+export const setOwner = (account) => ({
+  type: actionTypes.SET_OWNER,
+  payload: account,
+});
+
+export const setPoolDetails = (details) => ({
+  type: actionTypes.SET_POOL_DETAILS,
+  payload: details,
+});
+
+export const setPoolParticipants = (participants = []) => ({
+  type: actionTypes.SET_POOL_PARTICIPANTS,
+  payload: participants,
+});
+
 export const openDialog = dialogName => ({
   type: actionTypes.OPEN_DIALOG,
   payload: dialogName,

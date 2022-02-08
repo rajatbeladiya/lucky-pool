@@ -10,11 +10,11 @@ contract LuckyPool is Ownable {
         uint256 id;
         string poolName;
         uint256 ticketPrice;
-        uint256 time;
+        // uint256 time;
         bool completed;
     }
 
-    Pool[] pools;
+    Pool[] public pools;
     uint256 poolIdCounter = 1;
 
     mapping(uint256 => address[]) poolToParticipants;
@@ -23,21 +23,26 @@ contract LuckyPool is Ownable {
     IERC20 depositTokenAddress;
 
     constructor(address _tokenAddress) {
-        createPool("first pool", 100, 120);
+        createPool("USDC pool", 100);
         depositTokenAddress = IERC20(_tokenAddress);
     }
 
-    function createPool (string memory _poolName, uint256 _ticketPrice, uint256 _time) public onlyOwner  {
+    function createPool (string memory _poolName, uint256 _ticketPrice) public onlyOwner  {
         pools.push(
                 Pool({
                     id: poolIdCounter,
                     poolName: _poolName,
                     ticketPrice: _ticketPrice,
-                    time: _time,
+                    // time: _time,
                     completed: false
             })
         );
         poolIdCounter++;
+    }
+
+    function getPoolDetails (uint256 _poolIndex) public view returns(string memory poolName, uint256 ticketPrice, bool completed) {
+        Pool memory poolDetails = pools[_poolIndex]; 
+        return (poolDetails.poolName, poolDetails.ticketPrice, poolDetails.completed);
     }
 
     function joinPool(uint256 _poolId) public {

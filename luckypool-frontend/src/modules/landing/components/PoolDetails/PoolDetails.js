@@ -1,35 +1,81 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
+import { noop } from '../../../../utils';
 
-class PoolDetails extends Component {
-  render() {
-    return (
-      <div className="pool-details-wrapper">
-        <div className="pool-details">
-          <div className='pool-name'>
-              Pool Name
-          </div>
-          <div className='pool-info-wrapper'>
-              <div className='pool-info'>
-                  <div className='title'>Current reward</div>
-                  <div className='value'>$7.123</div>
-              </div>
-              <div className='pool-info'>
-                  <div className='title'>No. of players</div>
-                  <div className='value'>3</div>
-              </div>
-              <div className='pool-info'>
-                  <div className='title'>Total Stacked</div>
-                  <div className='value'>$120</div>
-              </div>
-              <div className='pool-info'>
-                  <div className='title'>Ticket Price</div>
-                  <div className='value'>$100</div>
-              </div>
-          </div>
+const PoolDetails = ({
+  poolDetails, poolParticipants, onJoinClick, onAnnounceWinnerClick,
+  onDistributePrizeClick,
+}) => (
+  <div className="pool-details-wrapper">
+    <div className="pool-details">
+      <div className='pool-name-wrapper'>
+        <div className='pool-name'>
+            {poolDetails.poolName}
+        </div>
+        <div className='join-wrapper'>
+          <Button
+            type="button"
+            className="join-btn"
+            variant='contained'
+            onClick={() => onJoinClick()}
+          >
+            Join
+          </Button>
+        </div>
+        <div className='announce-winner-wrapper'>
+          <Button
+            type="button"
+            className="announce-winner"
+            variant='contained'
+            onClick={() => onAnnounceWinnerClick()}
+          >
+            Announce Winner
+          </Button>
+        </div>
+        <div className='distribute-prize-wrapper'>
+          <Button
+            type="button"
+            className="distribute-prize"
+            variant='contained'
+            onClick={() => onDistributePrizeClick()}
+          >
+            Distribute Prize
+          </Button>
         </div>
       </div>
-    );
-  }
+      <div className='pool-info-wrapper'>
+          <div className='pool-info'>
+              <div className='title'>No. of players</div>
+              <div className='value'>{poolParticipants.length}</div>
+          </div>
+          <div className='pool-info'>
+              <div className='title'>Total Prize</div>
+              <div className='value'>${poolParticipants.length * (poolDetails && poolDetails.ticketPrice && poolDetails.ticketPrice.toNumber())}</div>
+          </div>
+          <div className='pool-info'>
+              <div className='title'>Ticket Price</div>
+              <div className='value'>${poolDetails && poolDetails.ticketPrice && poolDetails.ticketPrice.toNumber()}</div>
+          </div>
+      </div>
+    </div>
+  </div>
+);
+
+PoolDetails.propTypes = {
+  poolParticipants: PropTypes.instanceOf(Array),
+  onJoinClick: PropTypes.func,
+  onAnnounceWinnerClick: PropTypes.func,
+  onDistributePrizeClick: PropTypes.func,
 }
+
+PoolDetails.defaultProps = {
+  poolParticipants: [],
+  onJoinClick: noop,
+  onAnnounceWinnerClick: noop,
+  onDistributePrizeClick: noop,
+}
+
+
 
 export default PoolDetails;

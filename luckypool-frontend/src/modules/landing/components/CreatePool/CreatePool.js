@@ -28,15 +28,6 @@ const CreatePool = ({ handleSubmit, onCreatePool, loading, closeDialog }) => (
           type="text"
         />
       </div>
-      <div className="form-field">
-        <Field
-          className="input-field"
-          name="confirmPassword"
-          component={TextField}
-          label="Time"
-          type="text"
-        />
-      </div>
       <div className="login-button">
         <span />
         <div className="right-buttons">

@@ -18,7 +18,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.8.0",
-  // paths: {
-  //   artifacts: "./luckypool-frontend/src/contracts"
-  // }
+  paths: {
+    artifacts: "./luckypool-frontend/src/contracts"
+  }
 };

@@ -4,7 +4,10 @@ const INITIAL_STATE = {
   loading: false,
   data: {},
   account: '',
+  owner: '',
   currentDialogNames: [],
+  poolDetails: [],
+  poolParticipants: [],
 };
 
 
@@ -19,6 +22,21 @@ export default (state = INITIAL_STATE, action) => { // eslint-disable-line
       return {
         ...state,
         account: action.payload,
+      };
+    case actionTypes.SET_OWNER:
+      return {
+        ...state,
+        owner: action.payload,
+      };
+    case actionTypes.SET_POOL_DETAILS:
+      return {
+        ...state,
+        poolDetails: action.payload,
+      };
+    case actionTypes.SET_POOL_PARTICIPANTS:
+      return {
+        ...state,
+        poolParticipants: action.payload,
       };
     case actionTypes.OPEN_DIALOG:
       return {
