@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { getWeb3 } from '../../../utils';
@@ -7,6 +8,8 @@ import { CREATE_POOL_DIALOG } from '../../DialogNames';
 
 import AppHeader from './AppHeader';
 import * as landingActions from '../../../modules/landing/redux/actions';
+import { uauth } from '../../../config';
+import { showNotification } from '../../../utils/Notifications';
 
 class AppHeaderContainer extends Component {
 
@@ -16,9 +19,9 @@ class AppHeaderContainer extends Component {
 
   async componentDidMount() {
     const { setAccount, setOwner } = this.props;
-    const web3 = await getWeb3();
-    const [account] = await web3.eth.getAccounts();
-    setAccount(account);
+    // const web3 = await getWeb3();
+    // const [account] = await web3.eth.getAccounts();
+    // setAccount(account);
     console.log('luckyPoolContract=====', luckyPoolContract);
     try {
       const admin = await luckyPoolContract.owner();
@@ -41,6 +44,21 @@ class AppHeaderContainer extends Component {
     openDialog(CREATE_POOL_DIALOG);
   }
 
+  handleLogin = () => {
+    const { account, setAccount } = this.props;
+    if (account && Object.keys(account) && Object.keys(account).length > 0) {
+      uauth
+        .logout()
+        .then(() => setAccount(undefined))
+        .catch(error => showNotification(error.message, 'error', 3000))
+    } else {
+      uauth
+        .loginWithPopup()
+        .then(() => uauth.user().then(setUser => setAccount(setUser)))
+        .catch(error => showNotification(error.message, 'error', 3000))
+    }
+  }
+
   render() {
     const { admin } = this.state;
     const { account } = this.props;
@@ -50,10 +68,19 @@ class AppHeaderContainer extends Component {
         onCreatePool={this.onCreatePool}
         account={account}
         admin={admin}
+        handleLogin={this.handleLogin}
       />
     )
   }
 }
+
+AppHeaderContainer.propTypes = {
+  account: PropTypes.instanceOf(Object),
+};
+
+AppHeaderContainer.defaultProps = {
+  account: {},
+};
 
 const mapStateToProps = state => ({
   account: state.landing.account,

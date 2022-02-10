@@ -7,12 +7,17 @@ import * as landingActions from '../redux/actions';
 
 import { luckyPoolContract } from '../../../utils/ethersIndex';
 import { noop } from '../../../utils';
+import { uauth } from '../../../config';
 
 class LandingContainer extends Component {
 
   async componentDidMount() {
-    const { setPoolDetails, setPoolParticipants } = this.props;
-    // await luckyPoolContract.pools();
+    const { setPoolDetails, setPoolParticipants, setAccount } = this.props;
+    uauth
+      .user()
+      .then(setUser => setAccount(setUser))
+      .catch(() => {})
+    
     console.log('luckyPoolContract dsf======', await luckyPoolContract.pools(0));
     const poolDetails = await luckyPoolContract.getPoolDetails(0);
     const poolParticipants = await luckyPoolContract.getPoolToParticipants(0);
@@ -44,6 +49,7 @@ const mapDispatchToProps = dispatch => ({
   getData: data => dispatch(landingActions.getData(data)),
   setPoolDetails: details => dispatch(landingActions.setPoolDetails(details)),
   setPoolParticipants: participants => dispatch(landingActions.setPoolParticipants(participants)),
+  setAccount: account => dispatch(landingActions.setAccount(account)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingContainer);

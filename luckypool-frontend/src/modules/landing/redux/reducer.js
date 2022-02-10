@@ -3,7 +3,7 @@ import * as actionTypes from './actionTypes';
 const INITIAL_STATE = {
   loading: false,
   data: {},
-  account: '',
+  account: {},
   owner: '',
   currentDialogNames: [],
   poolDetails: [],
