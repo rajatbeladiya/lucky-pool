@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { noop } from '../../../../utils';
@@ -17,14 +17,14 @@ const PoolDetails = ({
           <Button
             type="button"
             className="join-btn"
-            variant='contained'
+            variant='outlined'
             onClick={() => onJoinClick()}
           >
             Join
           </Button>
         </div>
         {
-          owner === '' && (
+          owner === '0x6840a08B4e51Cd863BbE6c902b60C59dBCA85f97' && (
             <>
               <div className='announce-winner-wrapper'>
                 <Button
@@ -53,15 +53,15 @@ const PoolDetails = ({
       <div className='pool-info-wrapper'>
           <div className='pool-info'>
               <div className='title'>No. of players</div>
-              <div className='value'>{poolParticipants.length}</div>
+              <div className='value'>{poolParticipants.length || 0}</div>
           </div>
           <div className='pool-info'>
               <div className='title'>Total Prize</div>
-              <div className='value'>${poolParticipants.length * (poolDetails && poolDetails.ticketPrice && poolDetails.ticketPrice.toNumber())}</div>
+              <div className='value'>${(poolParticipants.length * (poolDetails && poolDetails.ticketPrice && poolDetails.ticketPrice.toNumber())) || '0'}</div>
           </div>
           <div className='pool-info'>
               <div className='title'>Ticket Price</div>
-              <div className='value'>${poolDetails && poolDetails.ticketPrice && poolDetails.ticketPrice.toNumber()}</div>
+              <div className='value'>${(poolDetails && poolDetails.ticketPrice && poolDetails.ticketPrice.toNumber()) || '100'}</div>
           </div>
       </div>
     </div>

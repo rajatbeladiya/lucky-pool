@@ -1,6 +1,7 @@
 .main-template {
     height: 100%;
     .main-content {
+        background: #25294a;
         height: calc(100% - #{$app-header-height});
         .children-container {
             height: 100%;
