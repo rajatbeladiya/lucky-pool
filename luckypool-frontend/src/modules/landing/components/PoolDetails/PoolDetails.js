@@ -5,7 +5,7 @@ import { noop } from '../../../../utils';
 
 const PoolDetails = ({
   poolDetails, poolParticipants, onJoinClick, onAnnounceWinnerClick,
-  onDistributePrizeClick,
+  onDistributePrizeClick, owner,
 }) => (
   <div className="pool-details-wrapper">
     <div className="pool-details">
@@ -23,26 +23,32 @@ const PoolDetails = ({
             Join
           </Button>
         </div>
-        <div className='announce-winner-wrapper'>
-          <Button
-            type="button"
-            className="announce-winner"
-            variant='contained'
-            onClick={() => onAnnounceWinnerClick()}
-          >
-            Announce Winner
-          </Button>
-        </div>
-        <div className='distribute-prize-wrapper'>
-          <Button
-            type="button"
-            className="distribute-prize"
-            variant='contained'
-            onClick={() => onDistributePrizeClick()}
-          >
-            Distribute Prize
-          </Button>
-        </div>
+        {
+          owner === '' && (
+            <>
+              <div className='announce-winner-wrapper'>
+                <Button
+                  type="button"
+                  className="announce-winner"
+                  variant='contained'
+                  onClick={() => onAnnounceWinnerClick()}
+                >
+                  Announce Winner
+                </Button>
+              </div>
+              <div className='distribute-prize-wrapper'>
+                <Button
+                  type="button"
+                  className="distribute-prize"
+                  variant='contained'
+                  onClick={() => onDistributePrizeClick()}
+                >
+                  Distribute Prize
+                </Button>
+              </div>
+            </>
+          )
+        }
       </div>
       <div className='pool-info-wrapper'>
           <div className='pool-info'>
@@ -67,6 +73,7 @@ PoolDetails.propTypes = {
   onJoinClick: PropTypes.func,
   onAnnounceWinnerClick: PropTypes.func,
   onDistributePrizeClick: PropTypes.func,
+  owner: PropTypes.string,
 }
 
 PoolDetails.defaultProps = {
@@ -74,6 +81,7 @@ PoolDetails.defaultProps = {
   onJoinClick: noop,
   onAnnounceWinnerClick: noop,
   onDistributePrizeClick: noop,
+  owner: '',
 }
 
 

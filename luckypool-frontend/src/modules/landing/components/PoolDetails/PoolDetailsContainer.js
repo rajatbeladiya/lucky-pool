@@ -32,7 +32,7 @@ class PoolDetailsContainer extends Component {
   }
 
   render() {
-    const { poolDetails, poolParticipants } = this.props;
+    const { poolDetails, poolParticipants, owner } = this.props;
     return (
       <PoolDetails
         poolDetails={poolDetails}
@@ -40,6 +40,7 @@ class PoolDetailsContainer extends Component {
         onJoinClick={this.onJoinClick}
         onAnnounceWinnerClick={this.onAnnounceWinnerClick}
         onDistributePrizeClick={this.onDistributePrizeClick}
+        owner={owner}
       />
     );
   }
@@ -48,17 +49,20 @@ class PoolDetailsContainer extends Component {
 PoolDetailsContainer.propTypes = {
   poolDetails: PropTypes.instanceOf(Array),
   account: PropTypes.string,
+  owner: PropTypes.string,
 };
 
 PoolDetailsContainer.defaultProps = {
   poolDetails: [],
   account: '',
+  owner: '',
 };
 
 const mapStateToProps = state => ({
   poolDetails: state.landing.poolDetails,
   poolParticipants: state.landing.poolParticipants,
   account: state.landing.account,
+  owner: state.landing.owner,
 });
 
 const mapDispatchToProps = dispatch => ({
