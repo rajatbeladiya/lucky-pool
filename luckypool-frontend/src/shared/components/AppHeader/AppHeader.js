@@ -16,7 +16,7 @@ const AppHeader = ({ account, onConnectClick, onCreatePool, admin, handleLogin }
       </div>
       <div className="menu-items">
         {
-          admin && (
+          admin === (account && account.wallet_address) && (
             <Button
               type="button"
               className="create-pool"

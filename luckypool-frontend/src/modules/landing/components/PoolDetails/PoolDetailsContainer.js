@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import PoolDetails from './PoolDetails';
-import { usdcContract, luckyPoolDeployedAddress, luckyPoolContract, signer } from '../../../../utils/ethersIndex';
-// import * as landingActions from '../redux/actions';
+import { usdcContract, luckyPoolDeployedAddress, luckyPoolContract } from '../../../../utils/ethersIndex';
 
 class PoolDetailsContainer extends Component {
 

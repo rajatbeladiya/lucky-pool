@@ -11,7 +11,7 @@ const PoolDetails = ({
     <div className="pool-details">
       <div className='pool-name-wrapper'>
         <div className='pool-name'>
-            {poolDetails.poolName}
+            {(poolDetails && poolDetails.poolName) || 'Pool Name'}
         </div>
         <div className='join-wrapper'>
           <Button

@@ -18,6 +18,7 @@ class AppHeaderContainer extends Component {
   };
 
   async componentDidMount() {
+    await window.ethereum.enable();
     const { setAccount, setOwner } = this.props;
     // const web3 = await getWeb3();
     // const [account] = await web3.eth.getAccounts();

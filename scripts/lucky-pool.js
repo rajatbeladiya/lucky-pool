@@ -18,10 +18,6 @@ async function main() {
 
   [deployer, account2, account3] = await hre.ethers.getSigners();
 
-  console.log('deployer======', deployer.address);
-  console.log('account2======', account2.address);
-  console.log('account3======', account3.address);
-
   // We get the contract to deploy
   const USDC = await hre.ethers.getContractFactory("USDC");
   const usdc = await USDC.deploy();
@@ -30,9 +26,6 @@ async function main() {
 
   await usdc.transfer(account2.address, INITIAL_TOKEN_BALANCE);
   await usdc.transfer(account3.address, INITIAL_TOKEN_BALANCE);
-
-  console.log('account2 balance=====', await usdc.balanceOf(account2.address));
-  console.log('account3 balance=====', await usdc.balanceOf(account3.address));
 
   const LuckyPool = await hre.ethers.getContractFactory("LuckyPool");
   const luckyPool = await LuckyPool.deploy(usdc.address);
