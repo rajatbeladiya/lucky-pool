@@ -11,7 +11,7 @@ export const uauth = new UAuth({
     scope: 'openid email wallet',
 
     // This is the url that the auth server will redirect back to after every authorization attempt.
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: 'https://lucky-pool.netlify.app/callback',
 
     // OPTIONAL: This is the url that the auth server will redirect back to after
     // logging out. If not included, as in this example, the authorization is just

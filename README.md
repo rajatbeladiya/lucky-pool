@@ -4,7 +4,11 @@ Lucky Pool is a lottery play to earn game. Anyone can join the current pool with
 
 # Live at
 
-[https://lucky-pool.netlify.app/](https://lucky-pool.netlify.app/ "Unstoppable Swap")
+[https://lucky-pool.netlify.app/](https://lucky-pool.netlify.app/ "Lucky Pool")
+
+# Demo Video
+
+[https://youtu.be/wAIkP6VaoGU](https://youtu.be/wAIkP6VaoGU "Unstoppable Swap")
 
 # Setup and run the app
 
