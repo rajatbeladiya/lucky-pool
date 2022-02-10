@@ -9,25 +9,18 @@ class PoolDetailsContainer extends Component {
 
   onJoinClick = async () => {
     const { account } = this.props;
-    console.log('onJoinClick======');
-    const allowance = await usdcContract.allowance(account, luckyPoolDeployedAddress);
-    console.log('allowance=======', Number(allowance));
-    const approved = await usdcContract.approve(luckyPoolDeployedAddress, '100000000000000000000');
-    console.log('approved======', approved);
-    const joinedPool = await luckyPoolContract.joinPool(0);
-    console.log('joinedPool=======', joinedPool);
+    await usdcContract.allowance(account, luckyPoolDeployedAddress);
+    await usdcContract.approve(luckyPoolDeployedAddress, '100000000000000000000');
+    await luckyPoolContract.joinPool(0);
   }
 
   onAnnounceWinnerClick = async () => {
-    const announceWinner = await luckyPoolContract.announceWinnerByPool(0);
-    console.log('announceWinner======', announceWinner);
-    const winner = await luckyPoolContract.poolToWinner(0);
-    console.log('winner======', winner);
+    await luckyPoolContract.announceWinnerByPool(0);
+    await luckyPoolContract.poolToWinner(0);
   }
 
   onDistributePrizeClick = async () => {
-    const prizeDistribute = await luckyPoolContract.prizeDistribute(0);
-    console.log('prizeDistribute======', prizeDistribute);
+    await luckyPoolContract.prizeDistribute(0);
   }
 
   render() {

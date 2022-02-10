@@ -18,10 +18,8 @@ class LandingContainer extends Component {
       .then(setUser => setAccount(setUser))
       .catch(() => {})
     
-    console.log('luckyPoolContract dsf======', await luckyPoolContract.pools(0));
     const poolDetails = await luckyPoolContract.getPoolDetails(0);
     const poolParticipants = await luckyPoolContract.getPoolToParticipants(0);
-    console.log('poolParticipants======', poolParticipants);
     setPoolDetails(poolDetails);
     setPoolParticipants(poolParticipants);
   }

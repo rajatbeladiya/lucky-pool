@@ -18,15 +18,9 @@ class AppHeaderContainer extends Component {
   };
 
   async componentDidMount() {
-    await window.ethereum.enable();
-    const { setAccount, setOwner } = this.props;
-    // const web3 = await getWeb3();
-    // const [account] = await web3.eth.getAccounts();
-    // setAccount(account);
-    console.log('luckyPoolContract=====', luckyPoolContract);
+    const { setOwner } = this.props;
     try {
       const admin = await luckyPoolContract.owner();
-      console.log('admin======', admin);
       this.setState({
         admin
       });
