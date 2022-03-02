@@ -1,4 +1,4 @@
-# Unstoppable Swap
+# Lucky Pool
 
 Lucky Pool is a lottery play to earn game. Anyone can join the current pool with USDC coin and try their luck to win the lottery. Currently it is declaring the winner by simple random function but I am building on it to choose random winner with Chainlink randomness. I am planning to build this as `No Loss Lottery` by depositing this amount at AAVE protocol.
 
