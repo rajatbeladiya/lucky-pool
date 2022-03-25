@@ -8,7 +8,7 @@ Lucky Pool is a lottery play to earn game. Anyone can join the current pool with
 
 # Demo Video
 
-[https://youtu.be/wAIkP6VaoGU](https://youtu.be/wAIkP6VaoGU "Unstoppable Swap")
+[https://youtu.be/wAIkP6VaoGU](https://youtu.be/wAIkP6VaoGU "Lucky Pool Demo")
 
 # Setup and run the app
 
